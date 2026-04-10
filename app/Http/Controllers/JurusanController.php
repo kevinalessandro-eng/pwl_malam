@@ -3,19 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Mahasiswa;
 
-class MahasiswaController extends Controller
+class JurusanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //return Mahasiswa::all();\
-        return view('mahasiswa.index', [
-            'mahasiswa' => Mahasiswa::all()
-        ]);
+        //
     }
 
     /**
@@ -31,7 +27,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        Mahasiswa::create('data');
+        //
     }
 
     /**
@@ -39,7 +35,7 @@ class MahasiswaController extends Controller
      */
     public function show(string $id)
     {
-        Mahasiswa::find('data');
+        //
     }
 
     /**
@@ -55,7 +51,7 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Mahasiswa::where()->update(['data']);
+        //
     }
 
     /**
@@ -63,6 +59,6 @@ class MahasiswaController extends Controller
      */
     public function destroy(string $id)
     {
-        Mahasiswa::where()->delete();
+        //
     }
 }
