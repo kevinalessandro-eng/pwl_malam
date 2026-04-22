@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\MataKuliah;
 
 class MataKuliahController extends Controller
 {
@@ -11,7 +12,10 @@ class MataKuliahController extends Controller
      */
     public function index()
     {
-        //
+        //return Mahasiswa::all();\
+        return view('matakuliah.index', [
+            'matakuliah' => MataKuliah::all()
+        ]);
     }
 
     /**
@@ -19,7 +23,7 @@ class MataKuliahController extends Controller
      */
     public function create()
     {
-        //
+        return view('matakuliah.create');
     }
 
     /**
@@ -27,31 +31,41 @@ class MataKuliahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+
+        MataKuliah::create($data);
+
+        return redirect()->action([MataKuliahController::class, 'index']);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        MataKuliah::find('data');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit ($id)
     {
-        //
+        return view('matakuliah.edit', [
+            'matakuliah' => MataKuliah::find($id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+
+        MataKuliah::find($id)->update($data);
+
+        return redirect()->action([MataKuliahController::class, 'index']);
     }
 
     /**
@@ -59,6 +73,6 @@ class MataKuliahController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        MataKuliah::where()->delete();
     }
 }

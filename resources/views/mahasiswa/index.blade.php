@@ -16,7 +16,7 @@
             <td>{{$m->fullname}}</td>
             <td>{{$m->NIM}}</td>
             <td>{{$m->NIDN}}</td>
-            <td>{{$m->tempat_lahir}}</td>
+            <td>{{$m->tempat_lahir}}, {{$m->tanggal_lahir}}</td>
             <td>{{$m->alamat}}</td>
             <td>{{$m->created_at}}</td>
         </tr>
