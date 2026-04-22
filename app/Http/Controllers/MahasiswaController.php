@@ -23,7 +23,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('mahasiswa.create');
     }
 
     /**
@@ -31,13 +31,17 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        Mahasiswa::create('data');
+        $data = $request->except('_token');
+
+        Mahasiswa::create($data);
+
+        return redirect()->action([MahasiswaController::class, 'index']);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         Mahasiswa::find('data');
     }
@@ -45,17 +49,23 @@ class MahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit ($id)
     {
-        //
+        return view('mahasiswa.edit', [
+            'mahasiswa' => Mahasiswa::find($id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        Mahasiswa::where()->update(['data']);
+        $data = $request->except('_token');
+
+        Mahasiswa::find($id)->update($data);
+
+        return redirect()->action([MahasiswaController::class, 'index']);
     }
 
     /**

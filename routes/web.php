@@ -8,5 +8,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
-
+Route::resource('/mahasiswa', MahasiswaController::class);
