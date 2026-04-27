@@ -71,8 +71,10 @@ class JurusanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        Jurusan::where()->delete();
+        Jurusan::find($id)->delete();
+
+        return redirect()->action([JurusanController::class, 'index']);
     }
 }

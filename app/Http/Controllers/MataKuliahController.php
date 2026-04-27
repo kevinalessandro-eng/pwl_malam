@@ -73,6 +73,8 @@ class MataKuliahController extends Controller
      */
     public function destroy(string $id)
     {
-        MataKuliah::where()->delete();
+        MataKuliah::find($id)->delete();
+
+        return redirect()->action([MataKuliahController::class, 'index']);
     }
 }

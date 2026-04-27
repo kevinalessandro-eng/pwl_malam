@@ -12,7 +12,6 @@ class DosenController extends Controller
      */
     public function index()
     {
-        //return Mahasiswa::all();\
         return view('dosen.index', [
             'dosen' => Dosen::all()
         ]);
@@ -71,8 +70,10 @@ class DosenController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        Dosen::where()->delete();
+        Dosen::find($id)->delete();
+
+        return redirect()->action([DosenController::class, 'index']);
     }
 }

@@ -1,59 +1,118 @@
-<html>
+<!doctype html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Halaman Mahasiswa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     
-    <form class="form" action="{{ action([App\Http\Controllers\DosenController::class, 'update'], [$dosen->id]) }}" method="post">
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            padding: 20px; 
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar justify-content-end navbar-expand-lg bg-dark p-3 fs-4">
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a class="nav-link link-light active" aria-current="page" href="{{ action([App\Http\Controllers\MahasiswaController::class, 'index']) }}">Mahasiswa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="{{ action([App\Http\Controllers\DosenController::class, 'index']) }}">Dosen</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="{{ action([App\Http\Controllers\JurusanController::class, 'index']) }}">Jurusan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="{{ action([App\Http\Controllers\MataKuliahController::class, 'index']) }}">Mata Kuliah</a>
+            </li>
+        </ul>
+    </nav>
+
+    <h1 class="text-center p-3">Ubah Data Dosen</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    
+    <form class="form mb-3" action="{{ action([App\Http\Controllers\DosenController::class, 'update'], [$dosen->id]) }}" method="post">
         @csrf
         <input type="hidden" name="_method" value="PUT">
         <table>
-            <div class="form-group">
-            <label>Nama Lengkap :</label>
-            <input type="text" name="fullname" value="{{$dosen->fullname}}" size="40">
-            <br>
+            <tr>
+            <td>Nama Lengkap</td><td>:</td><td><input type="text" name="fullname" value="{{$dosen->fullname}}"></td>
+            </tr>
+            <tr>
+            <td>Nomor Induk Pegawai</td><td>:</td><td><input type="text" name="NIP" value="{{$dosen->NIP}}"></td>
+            </tr>
+            <tr>
+            <td>Nomor Induk Dosen Nasional</td><td>:</td><td><input type="text" name="NIDN" value="{{$dosen->NIDN}}"></td>
+            </tr>
+            <tr>
+            <td>Pendidikan Terakhir</td><td>:</td><td><input type="text" name="pendidikan_terakhir" value="{{$dosen->pendidikan_terakhir}}"></td>
+            </tr>
+            <tr>
+            <td>Jurusan ID</td><td>:</td><td><input type="text" name="jurusan_id" value="{{$dosen->jurusan_id}}"></td>
+            </tr>
+            <tr>
+            <td>Tempat Lahir</td><td>:</td><td><input type="text" name="tempat_lahir" value="{{$dosen->tempat_lahir}}"></td>
+            </tr>
+            <tr>
+            <td>Tanggal Lahir</td><td>:</td><td><input type="text" name="tanggal_lahir" value="{{$dosen->tanggal_lahir}}"></td>
+            </tr>
+            <tr>
+            <td>Alamat</td><td>:</td><td><textarea name="alamat">{{$dosen->alamat}}</textarea></td>
+            </tr>
+            <tr>
+            <td>
+                <button type="submit" class="btn btn-primary btn-lg" class="button">Add</button>
+                <button type="reset" class="btn btn-secondary btn-lg" class="button">Clear</button>
+            </td>
+            </tr>
+        </table>      
+        </form>
+</body>
+
+<footer class="bg-dark text-white pt-5 pb-4 mt-auto">
+    <div class="container text-center text-md-start">
+        <div class="row text-center text-md-start">
+      
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">ITBSS</h5>
+                <p>Sistem Informasi Akademik untuk pengelolaan data Mahasiswa, Dosen, Jurusan, dan Mata Kuliah.</p>
             </div>
 
-            <div class="form-group">
-            <label>Nomor Induk Pegawai :</label>
-            <input type="text" name="NIP" value="{{$dosen->NIP}}" size="40">
-            <br>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Menu</h5>
+                <p><a href="{{ action([App\Http\Controllers\MahasiswaController::class, 'index']) }}" class="text-white" style="text-decoration: none;">Mahasiswa</a></p>
+                <p><a href="{{ action([App\Http\Controllers\DosenController::class, 'index']) }}" class="text-white" style="text-decoration: none;">Dosen</a></p>
+                <p><a href="{{ action([App\Http\Controllers\JurusanController::class, 'index']) }}" class="text-white" style="text-decoration: none;">Jurusan</a></p>
+                <p><a href="{{ action([App\Http\Controllers\MataKuliahController::class, 'index']) }}" class="text-white" style="text-decoration: none;">Mata Kuliah</a></p>
             </div>
 
-            <div class="form-group">
-            <label>Nomor Induk Dosen Nasional :</label>
-            <input type="text" name="NIDN" value="{{$dosen->NIDN}}" size="40">
-            <br>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Kontak</h5>
+                <p><i class="fas fa-home mr-3"></i> Pontianak, Indonesia</p>
+                <p><i class="fas fa-envelope mr-3"></i> admin@itbss.ac.id</p>
             </div>
+        </div>
 
-            <div class="form-group">
-            <label>Pendidikan Terakhir :</label>
-            <input type="text" name="pendidikan_terakhir" value="{{$dosen->pendidikan_terakhir}}" size="40">
-            <br>
+        <hr class="mb-4">
+
+        <div class="row align-items-center">
+            <div class="col-md-7 col-lg-8">
+                <p>© 2026 Copyright: <strong>Sistem Akademik</strong></p>
             </div>
+        </div>
+    </div>
+</footer>
 
-            <div class="form-group">
-            <label>Jurusan ID :</label>
-            <input type="text" name="jurusan_id" value="{{$dosen->jurusan_id}}" size="40">
-            <br>
-            </div>      
-
-            <div class="form-group">
-            <label>Tempat Lahir :</label>
-            <input type="text" name="tempat_lahir" value="{{$dosen->tempat_lahir}}" size="40">
-            <br>
-            </div>
-
-            <div class="form-group">
-            <label>Tanggal Lahir :</label>
-            <input type="text" name="tanggal_lahir" value="{{$dosen->tanggal_lahir}}" size="40">
-            <br>
-            </div>
-
-            <div class="form-group">
-            <label>Alamat :</label>
-            <textarea type="text" name="alamat" size="40">{{$dosen->alamat}}</textarea>
-            <br>
-            </div>
-
-            <button type="submit" class="button">Add</button>
-            <button type="reset" class="button">Clear</button>
-        </table>
-    </form>
 </html>
