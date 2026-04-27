@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+    <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Halaman Mahasiswa</title>
@@ -8,75 +8,71 @@
     
     <style>
         html, body {
-             height: 100%;
+            height: 100%;
         }
 
         body {
             display: flex;
             flex-direction: column;
         }
-      
+        
         .navbar {
             padding: 20px; 
-        }
-
-        td {
-          font-size: 25px;
         }
     </style>
 </head>
   
 <body>
-  <nav class="navbar justify-content-end navbar-expand-lg bg-dark p-3 fs-4">
-<ul class="nav nav-underline">
-  <li class="nav-item">
-    <a class="nav-link link-light active" aria-current="page" href="{{ action([App\Http\Controllers\MahasiswaController::class, 'index']) }}">Mahasiswa</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link link-light" href="{{ action([App\Http\Controllers\DosenController::class, 'index']) }}">Dosen</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link link-light" href="{{ action([App\Http\Controllers\JurusanController::class, 'index']) }}">Jurusan</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link link-light" href="{{ action([App\Http\Controllers\MataKuliahController::class, 'index']) }}">Mata Kuliah</a>
-  </li>
-</ul>
-</nav>
+    <nav class="navbar justify-content-end navbar-expand-lg bg-dark p-3 fs-4">
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a class="nav-link link-light active" aria-current="page" href="{{ action([App\Http\Controllers\MahasiswaController::class, 'index']) }}">Mahasiswa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="{{ action([App\Http\Controllers\DosenController::class, 'index']) }}">Dosen</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="{{ action([App\Http\Controllers\JurusanController::class, 'index']) }}">Jurusan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="{{ action([App\Http\Controllers\MataKuliahController::class, 'index']) }}">Mata Kuliah</a>
+            </li>
+        </ul>
+    </nav>
 
     <h1 class="text-center p-3">Ubah Data Mahasiswa</h1>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     
-<form class="form" class="mb-3" action="{{ action([App\Http\Controllers\MahasiswaController::class, 'update'], [$mahasiswa->id]) }}" method="post">
-        @csrf
-        <input type="hidden" name="_method" value="PUT">~
-        <table>
+    <form class="form" class="mb-3" action="{{ action([App\Http\Controllers\MahasiswaController::class, 'update'], [$mahasiswa->id]) }}" method="post">
+      @csrf
+      <input type="hidden" name="_method" value="PUT">~
+      <table>
         <tr>
-            <td>Nama Lengkap</td><td>:</td><td><input type="text" name="fullname" value="{{$mahasiswa->fullname}}"></td>
+          <td>Nama Lengkap</td><td>:</td><td><input type="text" name="fullname" value="{{$mahasiswa->fullname}}"></td>
         </tr>
         <tr>
-            <td>Nomor Induk Mahasiswa</td><td>:</td><td><input type="text" name="NIM" value="{{$mahasiswa->NIM}}"></td>
+          <td>Nomor Induk Mahasiswa</td><td>:</td><td><input type="text" name="NIM" value="{{$mahasiswa->NIM}}"></td>
         </tr>
         <tr>
-            <td>Nomor Induk Siswa Nasional</td><td>:</td><td><input type="text" name="NIDN" value="{{$mahasiswa->NIDN}}"></td>
+          <td>Nomor Induk Siswa Nasional</td><td>:</td><td><input type="text" name="NIDN" value="{{$mahasiswa->NIDN}}"></td>
         </tr>
         <tr>
-            <td>Tempat Lahir</td><td>:</td><td><input type="text" name="tempat_lahir" value="{{$mahasiswa->tempat_lahir}}"></td>
+          <td>Tempat Lahir</td><td>:</td><td><input type="text" name="tempat_lahir" value="{{$mahasiswa->tempat_lahir}}"></td>
         </tr>
         <tr>
-            <td>Tanggal Lahir</td><td>:</td><td><input type="text" name="tanggal_lahir" value="{{$mahasiswa->tanggal_lahir}}"></td> 
+          <td>Tanggal Lahir</td><td>:</td><td><input type="text" name="tanggal_lahir" value="{{$mahasiswa->tanggal_lahir}}"></td> 
         </tr>
         <tr>
-            <td>Alamat</td><td>:</td><td><textarea name="alamat">{{$mahasiswa->alamat}}</textarea></td>
+          <td>Alamat</td><td>:</td><td><textarea name="alamat">{{$mahasiswa->alamat}}</textarea></td>
         </tr>
         <tr>
           <td>
-          <button type="submit" class="btn btn-primary btn-lg" class="button">Add</button>
-          <button type="reset" class="btn btn-secondary btn-lg" class="button">Clear</button>
+            <button type="submit" class="btn btn-primary btn-lg" class="button">Add</button>
+            <button type="reset" class="btn btn-secondary btn-lg" class="button">Clear</button>
           </td>
         </tr>
-    </table>
-</form>
+      </table>
+    </form>
 </body>
 
 <footer class="bg-dark text-white pt-5 pb-4 mt-auto">
